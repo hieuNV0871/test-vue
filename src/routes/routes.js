@@ -18,11 +18,28 @@ const routes = [
   },
   {
     path: config.route.blog,
-    component: () => import('../pages/Blog.vue'),
+    component: () => import('../pages/Blog/index.vue'),
     meta: {
       layout: DefaultLayout,
-      title: 'Blog'
+      title: 'Blog',
     },
+    children: [
+      {
+        path: "",
+        component: () => import("../pages/Blog/Blog.vue"),
+        meta: {
+          title: 'Blog'
+        }
+      },
+      {
+        path: ":slug",
+        component: () => import("../pages/Blog/BlogDetail.vue"),
+        meta: {
+          title: "Blog",
+          layout: DefaultLayout
+        }
+      }
+    ]
   },
   {
     path: config.route.download,
