@@ -17,6 +17,54 @@ const routes = [
     },
   },
   {
+    path: config.route.blog,
+    component: () => import('../pages/Blog.vue'),
+    meta: {
+      layout: DefaultLayout,
+      title: 'Blog'
+    },
+  },
+  {
+    path: config.route.download,
+    component: () => import('../pages/Download.vue'),
+    meta: {
+      layout: DefaultLayout,
+      title: 'Download'
+    },
+  },
+  {
+    path: config.route.docs,
+    component: () => import('../pages/Docs.vue'),
+    meta: {
+      layout: DefaultLayout,
+      title: 'Documentation'
+    },
+  },
+  {
+    path: config.route.donate,
+    component: () => import('../pages/Donate.vue'),
+    meta: {
+      layout: DefaultLayout,
+      title: 'Donate'
+    },
+  },
+  {
+    path: config.route.support,
+    component: () => import('../pages/Support.vue'),
+    meta: {
+      layout: DefaultLayout,
+      title: 'Support'
+    },
+  },
+  {
+    path: config.route.work,
+    component: () => import('../pages/Work.vue'),
+    meta: {
+      layout: DefaultLayout,
+      title: 'Work'
+    },
+  },
+  {
     path: config.route.pageNotFound,
     component: () => import('../pages/404NotFound.vue'),
     meta: {

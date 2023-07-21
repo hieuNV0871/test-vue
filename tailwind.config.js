@@ -18,7 +18,7 @@ module.exports = {
       colors: {
         'text-black':'#1b1b1b',
         'text-blue': '#2c6bed',
-        'text-blue-hover': '#1851b4',
+        'button-blue-hover': '#1851b4',
         'background-blue': '#9DBBF8'
       },
       boxShadow: {
