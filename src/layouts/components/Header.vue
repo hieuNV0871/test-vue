@@ -19,7 +19,7 @@
               class="flex justify-center items-center hover:text-text-blue px-3 py-2 capitalize"
             >
               <component :is="navItem.icon" />
-              <span v-if="navItem.title">{{ navItem.title }}</span>
+              <span v-if="navItem.title">{{ $t(navItem.title) }}</span>
             </a>
             <router-link
               v-else-if="navItem.to"
@@ -27,10 +27,12 @@
               class="flex justify-center items-center hover:text-text-blue px-3 py-2 capitalize"
             >
               <component :is="navItem.icon" />
-              <span v-if="navItem.title">{{ navItem.title }}</span>
+              <span v-if="navItem.title">{{ $t(navItem.title) }}</span>
             </router-link>
           </template>
-        </div>
+            <a @click="showLanguageModal = true" class="flex justify-center items-center hover:text-text-blue px-3 py-2 capitalize" href="#"><InstagramFilled/>{{selectedLang}}</a>
+            <LanguageModal v-if="showLanguageModal" @language-selected="updateSelectedLang" :lang = "languageList" @close="showLanguageModal = false"/>
+          </div>
       </div>
     </nav>
 </template>
@@ -38,6 +40,20 @@
 import { ref } from "vue";
 import config from "../../configs/config";
 import { TwitterCircleFilled, InstagramFilled } from "@ant-design/icons-vue";
+import LanguageModal from './LanguageModal.vue'
+import { useI18n } from 'vue-i18n'; 
+const showLanguageModal = ref(false)
+const selectedLang = ref("English")
+const languageList = ref([
+  {
+    locale: 'en',
+    title: 'English'
+  },
+  {
+    locale: 'vi',
+    title: 'Tiếng việt'
+  },
+])
 const navList = ref([
   {
     to: config.route.download,
@@ -49,7 +65,7 @@ const navList = ref([
   },
   {
     to: config.route.blog,
-    title: "blog",
+    title: "Blog",
   },
   {
     to: config.route.docs,
@@ -57,11 +73,11 @@ const navList = ref([
   },
   {
     to: config.route.work,
-    title: "careers",
+    title: "Careers",
   },
   {
     to: config.route.donate,
-    title: "donate",
+    title: "Donate",
   },
   {
     href: "https://www.facebook.com/10007I871295000",
@@ -73,11 +89,18 @@ const navList = ref([
     target: 'target="_blank"',
     icon: InstagramFilled,
   },
-  {
-    to: "#",
-    title: "english",
-    icon: InstagramFilled,
-  },
+  // {
+  //   to: "#",
+  //   title: "english",
+  //   icon: InstagramFilled,
+  // },
 ]);
+const { locale } = useI18n();
+
+const updateSelectedLang = (language)=>{
+  selectedLang.value = language.title;
+  locale.value = language.locale;
+  showLanguageModal.value = false
+}
 </script>
 <style></style>

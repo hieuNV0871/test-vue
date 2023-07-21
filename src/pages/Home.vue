@@ -7,7 +7,7 @@
                         <div class="w-[40%] p-3">
                             <h1 class="font-extrabold text-6xl mt-32">Speak Freely</h1>
                             <p class="my-4 text-xl">Say "hello" to a different messaging experience. An unexpected focus on privacy, combined with all of the features you expect.</p>
-                            <router-link to="/download" class="text-[#2c6bed] px-5 py-2 inline-block rounded-lg bg-white text-xl ">Get Signal</router-link>
+                            <router-link to="/download" class="text-[#2c6bed] px-5 py-2 inline-block rounded-lg bg-white text-xl font-semibold hover:text-[#1851b4] ">Get Signal</router-link>
                         </div>
                         <div class="flex p-3">
                             <img class=" mt-[46px]  w-[320px] rotate-[22.5deg]" src="https://signal.org/assets/features/signal-iphone-eee9210b058079bae2f5972f41b87c68a95cdca5e7bc8c878d9450663b5044c9.png" alt="">
