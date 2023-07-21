@@ -22,6 +22,7 @@
     })
 function selectLanguage(language) {
   emit('language-selected', language);
+  localStorage.setItem("selectedLanguage", language.title);
   closeModal();
 }
   

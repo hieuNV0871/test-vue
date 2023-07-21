@@ -37,13 +37,13 @@
     </nav>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import config from "../../configs/config";
 import { TwitterCircleFilled, InstagramFilled } from "@ant-design/icons-vue";
 import LanguageModal from './LanguageModal.vue'
 import { useI18n } from 'vue-i18n'; 
 const showLanguageModal = ref(false)
-const selectedLang = ref("English")
+const selectedLang = ref("")
 const languageList = ref([
   {
     locale: 'en',
@@ -96,10 +96,14 @@ const navList = ref([
   // },
 ]);
 const { locale } = useI18n();
-
+onMounted(() => {
+  // Set the initial value of selectedLang based on the saved language in browser storage
+  selectedLang.value = localStorage.getItem("selectedLanguage") || "English";
+});
 const updateSelectedLang = (language)=>{
   selectedLang.value = language.title;
   locale.value = language.locale;
+  localStorage.setItem('selectedLocale', language.locale);
   showLanguageModal.value = false
 }
 </script>
